@@ -31,12 +31,12 @@ public class ConexionServidor {
 			OutputStream os=newSocket.getOutputStream();
                         
 			byte[] mensaje=new byte[25];
-                       for(int i=0;i<3;i++){
+                    
 			is.read(mensaje);
                        
                             is.read();
 			System.out.println("Mensaje recibido: "+new String(mensaje));
-                       }  
+                        
 			System.out.println("Cerrando el nuevo socket");
 
 			newSocket.close();
