@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.util.Arrays;
 import javax.swing.JOptionPane;
 
 public class ConexionCliente {
@@ -23,14 +24,24 @@ public class ConexionCliente {
 
 			InputStream is = clienteSocket.getInputStream();
 			OutputStream os= clienteSocket.getOutputStream();
-
 			System.out.println("Enviando mensajes");
-                           for(int i=0;i<3;i++){
-			String mensaje=JOptionPane.showInputDialog("Ingrese mensaxe");
-			os.write(mensaje.getBytes());
+                        
+                            byte[]a= new byte[23];                 
+                           for(int i=0;i<5;i++){                          
+                         String g=JOptionPane.showInputDialog("Ingrese un número");
                          
-			System.out.println("Mensaje enviado");
-                           }
+                         os.write(g.getBytes());                         
+                        System.out.println(g);
+                          System.out.println("Mensaje enviado");         
+                        }                         
+			
+                          
+                System.out.println("Los 5 numeros enviados");
+                
+                is.read(a);
+                String h= new String(a);
+                double tr=Double.parseDouble(h);
+                    System.out.println("El resultado es "+tr);
 			System.out.println("Cerrando el socket cliente");
 
 			clienteSocket.close();
@@ -38,9 +49,8 @@ public class ConexionCliente {
 			System.out.println("Terminado");
                     
 			}catch (IOException e) {
-				e.printStackTrace();
 			}
-    }
+      }
     
     
 }

@@ -7,8 +7,10 @@ import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class ConexionServidor {
+    ArrayList numser= new ArrayList();
     public static void main(String[] args){
 		try{
                     
@@ -29,15 +31,33 @@ public class ConexionServidor {
 
 			InputStream is=newSocket.getInputStream();
 			OutputStream os=newSocket.getOutputStream();
+                        	byte[] a=new byte[23];
+                                 double lista[]=new double[5];
+                                String h = null;
+                              double result;
+                           for(int i=0;i<5;i++){   
+                           is.read(a);
+                              h= new String(a);
+                             
+                              try {
+                              result= Double.parseDouble(h);
+                              lista[i]=result;
+                           System.out.println(result);
+                        }catch (NumberFormatException e){
+                                 System.out.println("no es un numero aceptado"); 
+                              }                            
+                           }
+                           System.out.println("numeros recibidos");
+                            System.out.println("Enviando resultados");
+                          double resultado=lista[0]+lista[1]+lista[2]+lista[3]+lista[4];
+                          String f=resultado+"";
+                        os.write(f.getBytes());
+                                   
+                               
                         
-			byte[] mensaje=new byte[25];
-                    
-			is.read(mensaje);
+			
                        
-                            is.read();
-			System.out.println("Mensaje recibido: "+new String(mensaje));
-                        
-			System.out.println("Cerrando el nuevo socket");
+			
 
 			newSocket.close();
                        
@@ -45,9 +65,10 @@ public class ConexionServidor {
 
 			serverSocket.close();
 
-			System.out.println("Terminado");
+			System.out.println("Fin");
 
                      }catch (IOException e) {
+                         System.out.println("Error "+e);
 			}
 		}
 
