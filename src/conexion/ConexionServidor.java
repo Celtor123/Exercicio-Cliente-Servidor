@@ -7,6 +7,7 @@ import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
+import javax.swing.JOptionPane;
 
 public class ConexionServidor {
     public static void main(String[] args){
@@ -16,8 +17,7 @@ public class ConexionServidor {
 	
 			ServerSocket serverSocket=new ServerSocket();
 
-			System.out.println("Realizando el bind");
-
+			
 			InetSocketAddress addr=new InetSocketAddress("localhost",6666);
 			serverSocket.bind(addr);
 
@@ -33,9 +33,9 @@ public class ConexionServidor {
 			byte[] mensaje=new byte[25];
                        for(int i=0;i<3;i++){
 			is.read(mensaje);
-                       
-                            is.read();
 			System.out.println("Mensaje recibido: "+new String(mensaje));
+                        String mensajes=JOptionPane.showInputDialog("Ingrese mensaxe");
+			os.write(mensajes.getBytes());
                        }  
 			System.out.println("Cerrando el nuevo socket");
 

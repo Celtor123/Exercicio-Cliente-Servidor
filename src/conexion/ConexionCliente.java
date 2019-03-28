@@ -25,11 +25,14 @@ public class ConexionCliente {
 			OutputStream os= clienteSocket.getOutputStream();
 
 			System.out.println("Enviando mensajes");
+                        byte[] mensaje=new byte[25];
                            for(int i=0;i<3;i++){
-			String mensaje=JOptionPane.showInputDialog("Ingrese mensaxe");
-			os.write(mensaje.getBytes());
+			String mensajes=JOptionPane.showInputDialog("Ingrese mensaxe");
+			os.write(mensajes.getBytes());
                          
 			System.out.println("Mensaje enviado");
+                        is.read(mensaje);
+                               System.out.println("Mensaxe do servidor:"+new String(mensaje));
                            }
 			System.out.println("Cerrando el socket cliente");
 
