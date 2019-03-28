@@ -9,7 +9,7 @@ import java.net.Socket;
 import javax.swing.JOptionPane;
 
 public class ConexionCliente {
-
+//cel
     public static void main(String[] args) {
       
 		try{

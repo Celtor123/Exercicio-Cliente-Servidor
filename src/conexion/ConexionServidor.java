@@ -10,6 +10,7 @@ import java.net.Socket;
 import javax.swing.JOptionPane;
 
 public class ConexionServidor {
+    //cel
     public static void main(String[] args){
 		try{
                     
